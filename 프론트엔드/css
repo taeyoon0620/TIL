@@ -1,0 +1,53 @@
+## 5/9일 css프론트엔드
+css는 cascading style sheet입니다. 연쇄적으로 적용하는 스타일의모음 밑에서위로적용됨
+하나의 css파일을가지고 여러개의파일에 적용할수있어서 간편하다.
+웹표준 html - css 분리해서 사용하는거 
+웹호환성 (cross browsing) ⇒ 어떤 브라우저 운영체제에서든 잘 실행되어야하는것(크롬,오페라,사파리)
+웹표준을 지키기위해 css를사용한다
+
+##css 의 3가지 style
+
+##<Internal style> html 파일 내부에 style 태그를 이용하여 표현된것 (사용지양~ 유지보수 한계있음!)
+ex)
+<head>
+<style>
+  selector : declaration  
+</style>
+</head>
+
+##<Inline style> html 파일 내에 표현된것 (사용지양!! 가독성,유지보수 떨어짐)
+ex)
+<p style='background-color:#00f; color:ff0'>즐거운 하루!</p>
+
+##<external style> 외부 파일로 css를 표현하는것
+ex)
+<!-- [방법1] -->
+<!-- rel: relationship / href : hyper reference -->
+<!-- <link rel="stylesheet" href="css/basic.css">  -->
+<!-- 외부 css 파일 연결  -->
+
+<!-- [방법2] -->
+<style>
+  /* @import url(css/basic.css); */
+  @import "css/basic.css"; 
+  /* 마지막에 ; semicolon  */
+</style>
+
+
+
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/748bd371-dcfc-4c08-93d5-5de1428fd435)
+![Untitled 2](https://github.com/taeyoon0620/TIL/assets/165011661/83ab0650-4853-483e-a775-82a5665b87dc)
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/eb805f1c-4f91-4028-b9f2-1857e6981714)
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/95455826-1a43-4c69-9ef5-638069fc3820)
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/64239998-03a2-45b1-aa3c-a8a8a4a79860)
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/ff7b460b-7f45-4704-b881-be3a5c5e1962)
+![Untitled 1](https://github.com/taeyoon0620/TIL/assets/165011661/1194ef30-265b-4ffa-99b8-19ee67979c79)
+![Untitled 2](https://github.com/taeyoon0620/TIL/assets/165011661/1bf2f019-0623-48b5-91df-275f03f7a4e0)
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/2222de69-fc52-4e3c-8c89-1032cb62f559)
+![Untitled 1](https://github.com/taeyoon0620/TIL/assets/165011661/42e814ee-994e-4b3f-b9f9-b97ee85fe57c)
+![Untitled 2](https://github.com/taeyoon0620/TIL/assets/165011661/a4406e6b-50e2-4508-9f2f-fd6681aec1e6)
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/bbb09d96-01c4-4c8d-8aa3-c1e9a9fd17bd)
+![Untitled 1](https://github.com/taeyoon0620/TIL/assets/165011661/7534cb20-6864-4694-a3e9-3ae109dc9295)
+![Untitled 2](https://github.com/taeyoon0620/TIL/assets/165011661/c2422b85-9dbf-4f30-bf67-e7be5f893e2a)
+![Untitled 3](https://github.com/taeyoon0620/TIL/assets/165011661/0865ae4a-0fa6-4d20-b2c5-8ba29de596a6)
+![Untitled](https://github.com/taeyoon0620/TIL/assets/165011661/fdb0b89d-311f-483c-8500-5b1508a1d36a)
