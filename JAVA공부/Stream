@@ -1,0 +1,31 @@
+예시 문제:
+숫자 리스트 중에서 짝수만 선택한 후, 각 숫자를 제곱하고, 제곱한 값들을 내림차순으로 정렬하여 출력하는 코드
+
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(3, 9, 12, 7, 6, 18, 5, 14);
+
+        // Stream을 이용한 짝수 필터링, 제곱, 내림차순 정렬 후 출력
+        List<Integer> result = numbers.stream()
+                .filter(n -> n % 2 == 0)   // 짝수만 필터링
+                .map(n -> n * n)           // 각 숫자를 제곱
+                .sorted((a, b) -> b - a)   // 내림차순 정렬
+                .collect(Collectors.toList());  // 리스트로 수집
+
+        System.out.println("짝수의 제곱을 내림차순 정렬: " + result);
+    }
+}
+
+설명:
+filter(n -> n % 2 == 0): 리스트에서 짝수만 필터링합니다.
+map(n -> n * n): 각 짝수 숫자를 제곱합니다.
+sorted((a, b) -> b - a): 제곱한 값을 내림차순으로 정렬합니다.
+collect(Collectors.toList()): 결과를 리스트로 수집하여 최종적으로 출력합니다.
+
+출력 결과:
+짝수의 제곱을 내림차순 정렬: [324, 196, 144, 36]
