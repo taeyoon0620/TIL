@@ -1,0 +1,45 @@
+
+
+이 코드는 기본적인 싱글톤 패턴을 구현한 것입니다. 주요 특징은 다음과 같습니다:
+
+private 생성자: 외부에서 직접 인스턴스를 생성하지 못하게 합니다.
+정적 변수 instance: 유일한 인스턴스를 저장합니다.
+getInstance() 메서드: 인스턴스가 없으면 생성하고, 있으면 기존 인스턴스를 반환합니다.
+
+이 코드를 실행하면, 항상 같은 인스턴스를 사용하게 되어 메모리를 절약하고 전역 접근이 가능한 객체를 만들 수 있습니다.
+
+public class Singleton {
+    // 유일한 인스턴스를 저장할 정적 변수
+    private static Singleton instance;
+
+    // private 생성자로 외부에서 인스턴스 생성을 막음
+    private Singleton() {}
+
+    // 인스턴스를 얻기 위한 정적 메서드
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+
+    // 싱글톤 클래스의 기능을 나타내는 메서드
+    public void showMessage() {
+        System.out.println("안녕하세요, 저는 싱글톤 인스턴스입니다!");
+    }
+}
+
+// 사용 예시
+public class SingletonExample {
+    public static void main(String[] args) {
+        // 싱글톤 인스턴스 얻기
+        Singleton singleton = Singleton.getInstance();
+
+        // 메서드 호출
+        singleton.showMessage();
+
+        // 다시 인스턴스를 얻어도 같은 인스턴스임을 확인
+        Singleton anotherSingleton = Singleton.getInstance();
+        System.out.println("두 인스턴스가 같은지 비교: " + (singleton == anotherSingleton));
+    }
+}
