@@ -1,0 +1,16 @@
+문제: 주어진 정수 n에 대해 n번째 피보나치 수를 계산하는 함수를 구현하시오.
+
+
+public class Fibonacci {
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public static void main(String[] args) {
+        int position = 10; // 예를 들어 10번째 피보나치 수
+        System.out.println("Fibonacci number at position " + position + " is: " + fibonacci(position));
+    }
+}
