@@ -1,0 +1,59 @@
+  final 키워드
+  final은 변수, 메서드, 클래스에 적용될 수 있습니다.
+  final 변수: 한 번 초기화되면 값을 변경할 수 없습니다.
+  final 메서드: 서브클래스에서 오버라이딩할 수 없습니다.
+  final 클래스: 상속될 수 없습니다.
+class FinalExample {
+    // final 변수
+    final int finalVar = 100;
+
+    // final 메서드
+    public final void display() {
+        System.out.println("This is a final method.");
+    }
+}
+
+class SubClass extends FinalExample {
+    // 오버라이딩 불가능
+    // public void display() {
+    //     System.out.println("Cannot override final method");
+    // }
+}
+
+  Finally 블록
+  finally는 예외 처리에서 사용되며, try-catch 블록에서 예외가 발생하든 발생하지 않든 항상 실행되는 코드를 작성할 때 사용됩니다.
+  주로 리소스 해제를 위한 코드에서 사용됩니다.
+
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // 예외 발생
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught: " + e);
+        } finally {
+            System.out.println("This block always executes.");
+        }
+    }
+}
+
+  finalize() 메서드
+  finalize()는 가비지 컬렉션이 객체를 제거하기 전에 호출되는 메서드입니다.
+  Deprecated되었으며, 더 이상 사용하는 것을 권장하지 않습니다. 자바 9부터는 사용하지 않는 것이 좋습니다.
+  이 메서드를 사용하여 리소스를 정리할 수 있지만, 자바에서는 try-with-resources 구문을 더 많이 사용합니다.
+
+public class FinalizeExample {
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Finalize method called before object is destroyed.");
+    }
+
+    public static void main(String[] args) {
+        FinalizeExample obj = new FinalizeExample();
+        obj = null;  // 객체가 가비지 컬렉션 대상이 됨
+        System.gc(); // 가비지 컬렉터 호출 (실제 finalize 호출 여부는 JVM에 따라 다름)
+    }
+}
+차이점 정리
+final: 변수, 메서드, 클래스에 사용되며, 변경할 수 없거나 상속 및 오버라이딩을 제한합니다.
+finally: 예외 처리에서 항상 실행되는 코드를 정의할 때 사용됩니다.
+finalize(): 객체가 가비지 컬렉션되기 전에 호출되는 메서드지만, 이제는 사용되지 않는 방법입니다.
