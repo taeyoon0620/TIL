@@ -1,0 +1,39 @@
+JIT(Just-In-Time) 컴파일러가 어떻게 동작하는지 자바 코드로 구현하는 것은 JVM의 내부 동작을 자바 코드로 직접 재현하는 것은 불가능하지만,
+JIT 컴파일러가 "핫스팟"을 찾아서 자주 호출되는 메서드를 최적화하는 과정을 간접적으로 체험할 수 있는 코드를 보여드릴 수 있습니다. 아래 코드는 반복적인 계산 작업을 통해 JVM이 JIT 컴파일을 활용하도록 유도하는 예입니다.
+
+
+public class JITDemo {
+    public static void main(String[] args) {
+        // 측정 시작 시간
+        long startTime = System.nanoTime();
+        
+        // 반복적으로 메서드를 호출하여 JIT 컴파일러가 최적화하도록 유도
+        for (int i = 0; i < 10_000_000; i++) {
+            performHeavyCalculation();
+        }
+        
+        // 측정 종료 시간
+        long endTime = System.nanoTime();
+        System.out.println("Execution Time: " + (endTime - startTime) / 1_000_000 + " ms");
+    }
+
+    // 무거운 계산 작업
+    public static int performHeavyCalculation() {
+        int sum = 0;
+        for (int i = 0; i < 1_000; i++) {
+            sum += Math.sqrt(i); // 계산량이 많은 작업
+        }
+        return sum;
+    }
+}
+
+
+동작 설명:
+    핫스팟 탐지: performHeavyCalculation() 메서드가 매우 자주 호출됩니다. JVM은 이를 **핫스팟(Hotspot)**으로 감지합니다.
+    JIT 컴파일: JVM은 일정 횟수 이상 반복 실행되는 코드(핫스팟)를 감지하여 JIT 컴파일로 해당 코드를 네이티브 기계어로 변환합니다.
+    성능 최적화: 처음 몇 번의 실행에서는 인터프리터가 바이트코드를 해석하지만, 이후에는 JIT 컴파일된 네이티브 코드를 사용하여 빠르게 실행됩니다.
+
+
+기대 효과:
+  JIT 컴파일러는 performHeavyCalculation 메서드가 자주 호출된다는 것을 인식하고, 이 메서드를 최적화된 네이티브 코드로 변환하게 됩니다.
+  실행 시간이 JIT 컴파일러가 적용된 후에 점차 빨라질 수 있습니다.
